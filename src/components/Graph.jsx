@@ -23,7 +23,7 @@ ChartJS.register(
   Legend
 );
 
-const LineChart = ({ coinHistory, currentPrice, coinName }) => {
+const LineChart = ({ coinHistory, currentPrice, coinName ,mode}) => {
   const coinPrice = [];
   const coinTimestamp = [];
 
@@ -43,7 +43,7 @@ const LineChart = ({ coinHistory, currentPrice, coinName }) => {
         fill: true,
         backgroundColor: 'green',
         borderColor: 'green',
-        
+        color:'blue'
       },
     ],
   };
@@ -55,24 +55,30 @@ const LineChart = ({ coinHistory, currentPrice, coinName }) => {
           ticks: {
             beginAtZero: true,
           },
+          display:true,
+          gridColor:"white",
+          gridLines: {
+            color:"white",
+            lineWidth:0.5
+          },
         },
     },
   };
   return (
-    <>
+    <div className={mode=="dark"?"bg-[#0d0d0d] dark":""}>
       <Row className="chart-header">
-        <Typography.Title level={2} className="chart-Typography.Title mt-4">
+        <Typography.Title level={2} className="chart-Typography.Title mt-4 dark:text-gray-300">
           {coinName} Price History
         </Typography.Title>
         <Col className="chart-container">
-          <Typography.Title level={5} className="chart-Typography.Title md:mt-7">
+          <Typography.Title level={5} className="chart-Typography.Title md:mt-7 dark:text-gray-300">
             <div className='inline mr-3'>Change =<p className={{coinHistory}>0?"text-green-600":"text-red-600"} style={{display:"inline"}}>{coinHistory?.data?.change}%</p></div>
             <div className='inline'>Current Price=<p className='inline text-blue-600'>{currentPrice} $</p></div>
           </Typography.Title>
         </Col>
       </Row>
       <Line data={data} options={options} />
-    </>
+    </div>
   );
 };
 

@@ -4,7 +4,14 @@ module.exports = {
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      invert:{
+        25:'.25',
+        50:'.50',
+        75:'0.75'
+      }
+    },
   },
-  plugins: [],
+  plugins: [require('flowbite/plugin')],
+  important:true
 }

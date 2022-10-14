@@ -6,23 +6,15 @@ import {Cryptocurrencies,News} from './index'
 import { Button ,CircularProgress,Typography as Typo} from '@mui/material';
 import { useGetCryptosQuery } from '../services/cryptoApi';
 const { Title }  = Typography;
-const Homepage = () => {
+const Homepage = ({mode}) => {
   const {data,isFetching}=useGetCryptosQuery(10);
   const globalStats=data?.data?.stats
   if(isFetching) return (<div style={{display:"flex" ,justifyContent:"center",alignItems:"center", height:"100vh"}}><CircularProgress style={{margin:"0 auto"}}/></div>)
   return (
-    <>
-    <Title level={1} className="heading" style={{marginBottom:"35px",textAlign:"center"}}>
-      Global Crypto Stats
+    <div className={mode=="dark"?"bg-[#0d0d0d] py-10 px-5":"py-10 px-5"}>
+    <Title level={1}  style={{marginBottom:"35px",textAlign:"center"}} className={mode=="dark"?"text-gray-300":""} >
+      Global Crypto Statistics
     </Title>
-    {/* <Row>
-      <Col span={24} style={{margin:"15px 0",textAlign:"center"}}><i class="fa-solid fa-coins fa-2xl"></i><Statistic title="Total Coins" value={globalStats.totalCoins} style={{marginTop:"12px"}}/></Col>
-      <Col span={12} style={{margin:"25px 0",textAlign:"center"}}><i class="fa-brands fa-ethereum fa-2xl"></i><Statistic title="Total Cryptocurrencies" value={globalStats.total} style={{marginTop:"12px"}}/></Col>
-      <Col span={12} style={{margin:"25px 0",textAlign:"center"}}><i class="fa-solid fa-money-bill-trend-up fa-2xl"></i><Statistic title="Total Exchanges" value={millify(globalStats.totalExchanges)} style={{marginTop:"12px"}}/></Col>
-      <Col span={12} style={{margin:"25px 0",textAlign:"center"}}><i class="fa-solid fa-yen-sign fa-2xl"></i><Statistic title="Total Market Cap" value={millify(globalStats.totalMarketCap)} style={{marginTop:"12px"}}/>USD</Col>
-      <Col span={12} style={{margin:"25px 0",textAlign:"center"}}><i class="fa-solid fa-hourglass-start fa-2xl"></i><Statistic title="Total 24h Volume" value={millify(globalStats.total24hVolume)} style={{marginTop:"12px"}}/>USD</Col>
-      <Col span={24} style={{margin:"15px 0",textAlign:"center"}}><i class="fa-solid fa-globe fa-2xl"></i><Statistic title="Total Market" value={millify(globalStats.totalMarkets)} style={{marginTop:"12px"}}/></Col>
-      </Row> */}
 
 <div class="container my-24 px-6 mx-auto">
   <section class="mb-32 text-gray-800 text-center">
@@ -77,16 +69,16 @@ const Homepage = () => {
 </div>
 
       <div className="home-heading-container" style={{marginBottom:"20px"}}>
-        <Title level={1} className="home-title" style={{margin:"0"}}>Kings of the market</Title>
+        <Title level={1} style={{margin:"0"}} className={mode=="dark"?"text-gray-300 home-title":"home-title"}>Kings of the market</Title>
         <Button className="show-more" variant="outlined" size="small" style={{margin:"25.2 0"}}><Link to="/cryptocurrencies"><Typo variant="body2">Show All</Typo></Link></Button>
       </div>
-      <Cryptocurrencies simplified={true}/>
+      <Cryptocurrencies simplified={true} mode={mode}/>
       <div className="home-heading-container" style={{marginBottom:"20px"}}>
-      <Title level={1} className="home-title" style={{margin:"0"}}>What's out there</Title>
+      <Title level={1} className={mode=="dark"?"text-gray-300 home-title":"home-title"} style={{margin:"0"}}>What's out there</Title>
         <Button className="show-more" variant="outlined" size="small" style={{margin:"25.2 0"}}><Link to="/news"><Typo variant="body2">Show All</Typo></Link></Button>
       </div>
-      <News simplified />
-    </>
+      <News simplified mode={mode}/>
+    </div>
   )
 }
 
