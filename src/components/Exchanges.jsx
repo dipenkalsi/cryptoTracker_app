@@ -19,7 +19,7 @@ const Exchanges = ({mode}) => {
       </Typo>
 
       <Link to="/pricing">
-      <Button variant="contained" className="mx-auto">
+      <Button variant="contained" className="mx-auto mb-12">
         Subscribe to Pro
       </Button>
       </Link>

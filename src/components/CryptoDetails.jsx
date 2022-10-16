@@ -46,7 +46,7 @@ const CryptoDetails = ({mode}) => {
           {data?.data?.coin.name} ({data?.data?.coin.symbol})
         </Title>
       </Col>
-      <Select defaultValue="24h" className="select-timeperiod" placeholder="Select Timeperiod" onChange={(value) => setTimeperiod(value)}>
+      <Select defaultValue="24h" dropdownClassName='dropdown-style-dark' className="select-timeperiod" placeholder="Select Timeperiod" onChange={(value) => setTimeperiod(value)}>
         {time.map((date) => <Option key={date}>{date}</Option>)}
       </Select>
       <LineChart coinHistory={coinHistory} currentPrice={millify(cryptoDetails?.price)} coinName={cryptoDetails?.name} mode={mode}/>

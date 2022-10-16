@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom';
 import { Switch } from 'antd';
 import ButtonUnstyled from '@mui/base/ButtonUnstyled';
 import logo from './logo.png'
+import GoToTop from './GoToTop';
 const Navbar = ({mode,handleModeChange}) => {
   const [active ,setActive]=useState(true)
   const [screenSize,setScreenSize]=useState(null)
@@ -32,21 +33,33 @@ const Navbar = ({mode,handleModeChange}) => {
       </div>
       {active &&(
 
-        <Menu theme={mode=="light"?"light":"dark"} style={{backgroundColor:"whitesmoke"}} className={mode==="dark"?"bg-black":""}>
+        <Menu theme={mode=="light"?"light":"dark"} style={{backgroundColor:"whitesmoke"}} className={mode==="dark"?"bg-black w-full":"w-full"}>
             <Menu.Item>           
-                <Link to="/"><i class="fa-sharp fa-solid fa-house" style={{marginRight:"10px"}}></i>Home</Link>
+                <Link to="/"><i class="fa-sharp fa-solid fa-house" style={{marginRight:"10px"}} onClick={()=>setActive(!active)}></i>Home</Link>
+                <GoToTop/>
             </Menu.Item>
             <Menu.Item>
-                <Link to="/cryptocurrencies"><i class="fa-brands fa-bitcoin" style={{marginRight:"10px"}}></i>Cryptocurrencies</Link>
+                <Link to="/cryptocurrencies"><i class="fa-brands fa-bitcoin" style={{marginRight:"10px"}} onClick={()=>setActive(!active)}></i>Cryptocurrencies</Link>
+                <GoToTop/>
+
             </Menu.Item>
             <Menu.Item>
-                <Link to="/news"><i class="fa-solid fa-newspaper" style={{marginRight:"10px"}}></i>News</Link>
+                <Link to="/news"><i class="fa-solid fa-newspaper" style={{marginRight:"10px"}} onClick={()=>setActive(!active)}></i>News</Link>
+                <GoToTop/>
+
             </Menu.Item>
             <Menu.Item >
-                <Link to="/exchanges"><i class="fa-sharp fa-solid fa-coins" style={{marginRight:"10px"}}></i>Exchanges</Link>
+                <Link to="/exchanges"><i class="fa-sharp fa-solid fa-coins" style={{marginRight:"10px"}} onClick={()=>setActive(!active)}></i>Exchanges</Link>
+                <GoToTop/>
+
             </Menu.Item>
             <Menu.Item >
-                <Link to="/pricing"><i class="fa-solid fa-tag" style={{marginRight:"10px"}}></i>Plans and Pricing</Link>
+                <Link to="/pricing"><i class="fa-solid fa-tag" style={{marginRight:"10px"}} onClick={()=>setActive(!active)}></i>Plans and Pricing</Link>
+                <GoToTop/>
+
+            </Menu.Item>
+            <Menu.Item >
+                <Link to="/mission"><i class="fa-solid fa-hand-fist" style={{marginRight:"10px"}} onClick={()=>setActive(!active)}></i>Our Mission</Link>
             </Menu.Item>
             <div className='ml-3 mt-5 mb-3'>
             <Switch size="small" onClick={handleModeChange}/> Dark Mode

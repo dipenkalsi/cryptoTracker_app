@@ -29,11 +29,10 @@ const News = ({ simplified ,mode}) => {
             placeholder="Choose a crypto"
             optionFilterProp="children"
             size="large"
-            theme="dark"
             onChange={(value) => setNewsCategory(value)}
             filterOption={(input, option) => option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}
             style={{width:"90%", marginLeft:"4vw",}}
-            className={mode=="dark"?"dark-select":""}
+            className={mode=="dark"?"bg-gray-900":""}
           >
             <Option value="Cryptocurency">Cryptocurrency</Option>
             {data?.data?.coins?.map((currency) => <Option value={currency.name}>{currency.name}</Option>)}
@@ -42,7 +41,7 @@ const News = ({ simplified ,mode}) => {
       )}
       {cryptoNews.value.map((news, i) => (
         <Grid item xs={12} md={6} lg={4} xl={4} style={{padding:"0 10px", margin:"auto"}}>
-          <Card className="h-72 dark:bg-gray-900">
+          <Card className="h-72 dark:bg-gray-900 mx-3">
 <CardActionArea>
 <a href={news.url} target="_blank" rel="noreferrer">
 <div class="my-0">

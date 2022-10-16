@@ -6,6 +6,7 @@ import {useState} from 'react'
 import logo from '../src/components/logo.png'
 import {Navbar,Exchanges,Homepage,Cryptocurrencies,CryptoDetails,News} from './components';
 import Pricing from './components/Pricing';
+import Mission from './components/Mission';
 
 function App() {
   const [mode,setMode]=useState("light");
@@ -46,6 +47,9 @@ function App() {
               <Route exact path="/pricing">
                 <Pricing mode={mode}/>
               </Route>
+              <Route exact path="/mission">
+                <Mission mode={mode}/>
+              </Route>
             </Switch>
           </div>
         </Layout>
@@ -60,7 +64,7 @@ function App() {
           <Link to="/" className='text-green-600'>Home</Link>
           <Link to="/exchanges" className='text-green-600'>Exchanges</Link>
           <Link to="/news" className='text-green-600'>News</Link>
-          <Link to="/pricing" className='text-green-600'>Plans and Pricing</Link>
+          <Link to="/pricing" className='text-green-600 text-center'>Pricing</Link>
         </Space>
       </div>
       </div>
